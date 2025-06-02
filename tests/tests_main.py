@@ -9,11 +9,6 @@ def test_root():
     assert response.status_code == 200
     assert response.json() == {"message": "Welcome to the Hand Gesture Recognition API!"}
 
-# If you don't have a /health endpoint, comment or remove this test
-# def test_health_check():
-#     response = client.get("/health")
-#     assert response.status_code == 200
-#     assert response.json() == {"status": "healthy"}
 
 def test_predict():
     test_data = {
