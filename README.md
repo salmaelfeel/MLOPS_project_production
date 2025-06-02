@@ -24,3 +24,4 @@ The goal is to deploy a machine learning model for hand gesture classification t
 
 ## 🚀 Deployment
 - Dockerfile and docker-compose.yml provided.
+.
