@@ -5,15 +5,19 @@ import numpy as np
 
 app = FastAPI()
 
-# Load the trained model
-model = joblib.load("app/model/hand_gesture_model.pkl")
+# Load the model
+model = joblib.load("app/model/rf_model.pkl")  # Change if needed
 
-# Define input schema
+# Define the input schema
 class HandLandmarks(BaseModel):
-    features: list  # 63 features (21 landmarks * x,y,z)
+    features: list  # List of 63 numbers (21 landmarks x, y, z)
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Hand Gesture Recognition API!"}
 
 @app.post("/predict")
 def predict(landmarks: HandLandmarks):
-    input_features = np.array(landmarks.features).reshape(1, -1)
-    prediction = model.predict(input_features)
+    input_data = np.array(landmarks.features).reshape(1, -1)
+    prediction = model.predict(input_data)
     return {"gesture": prediction[0]}
