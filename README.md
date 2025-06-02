@@ -24,8 +24,3 @@ The goal is to deploy a machine learning model for hand gesture classification t
 
 ## 🚀 Deployment
 - Dockerfile and docker-compose.yml provided.
-- AWS EC2 or ClawCloud deployment supported.
-
-## 📂 Repositories
-- Research Repo: [link to research repo]
-- Frontend Repo: [link to frontend repo]
