@@ -3,10 +3,21 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 from prometheus_fastapi_instrumentator import Instrumentator
-
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://salmaelfeel.github.io",
+        "http://127.0.0.1:5500"
+    ],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load the model
 model = joblib.load("app/model/rf_model.pkl")  # Change if needed
