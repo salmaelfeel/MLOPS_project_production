@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import numpy as np
+from prometheus_fastapi_instrumentator import Instrumentator
+
+
 
 app = FastAPI()
 
@@ -21,3 +24,5 @@ def predict(landmarks: HandLandmarks):
     input_data = np.array(landmarks.features).reshape(1, -1)
     prediction = model.predict(input_data)
     return {"gesture": prediction[0]}
+
+instrumentator = Instrumentator().instrument(app).expose(app)
